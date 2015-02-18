@@ -145,6 +145,7 @@ void GPCamera::Async_CaptureCb(uv_work_t *req, int status) {
   gp_context_unref(capture_req->context);
   // gp_camera_unref(capture_req->camera);
   delete capture_req;
+  delete req;
 }
 
 
@@ -274,6 +275,7 @@ void GPCamera::Async_GetConfigCb(uv_work_t *req, int status) {
   gp_camera_unref(config_req->camera);
 
   delete config_req;
+  delete req;
 }
 
 Handle<Value> GPCamera::SetConfigValue(const Arguments &args) {
@@ -342,6 +344,7 @@ void GPCamera::Async_SetConfigValueCb(uv_work_t *req, int status) {
   gp_context_unref(config_req->context);
   gp_camera_unref(config_req->camera);
   delete config_req;
+  delete req;
 }
 
 Handle<Value> GPCamera::New(const Arguments& args) {

@@ -253,6 +253,7 @@ int GPCamera::getCameraFile(take_picture_request *req, CameraFile **file) {
     char *tmpname = strdup(req->target_path.c_str());
     fd = mkstemp(tmpname);
     req->target_path = tmpname;
+    free(tmpname);
   } else if (!req->socket_path.empty()) {
     struct sockaddr_un serv_addr;
     bzero(&serv_addr, sizeof(serv_addr));
